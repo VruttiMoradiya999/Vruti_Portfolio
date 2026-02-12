@@ -27,11 +27,41 @@ themeToggle.addEventListener('change', () => {
     }
 });
 
+// Mobile nav: hamburger toggle
+(function () {
+    const navbar = document.getElementById('navbar');
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (!navbar || !navToggle || !navMenu) return;
+
+    function closeNav() {
+        navbar.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    navToggle.addEventListener('click', () => {
+        const isOpen = navbar.classList.toggle('nav-open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    /* Close dropdown when any link or button inside is clicked */
+    navMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeNav);
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) closeNav();
+    });
+})();
+
 // Initial setup for animation
+const isDesktopHero = () => window.innerWidth > 768;
 gsap.set('.navbar', { xPercent: 0, opacity: 0 });
 gsap.set(['.nav-left', '.nav-center', '.nav-right'], { opacity: 0 });
-gsap.set(leftSection, { xPercent: -100, width: '50%' });
-gsap.set(rightSection, { xPercent: 100, width: '50%' });
+if (isDesktopHero()) {
+    gsap.set(leftSection, { xPercent: -100, width: '50%' });
+    gsap.set(rightSection, { xPercent: 100, width: '50%' });
+}
 gsap.set([leftText, rightText], { opacity: 0 });
 
 // Intro Animation
@@ -51,31 +81,40 @@ tl.to('.navbar', {
         stagger: 0.15,
         duration: 0.8,
         ease: "power2.out"
-    }, "-=0.6")
-    .to([leftSection, rightSection], {
+    }, "-=0.6");
+if (isDesktopHero()) {
+    tl.to([leftSection, rightSection], {
         xPercent: 0,
         duration: 1.5,
         ease: "power3.inOut"
     }, "-=0.5")
-    // After meeting at center, wait 1 second then fade in text
     .to([leftText, rightText], {
         opacity: 1,
         duration: 1,
         ease: "power2.out"
     }, "+=0.5");
+} else {
+    tl.to([leftSection, rightSection], { opacity: 1, duration: 0.5 }, "-=0.3");
+}
 
 function initMouseInteractions() {
     window.addEventListener('mousemove', (e) => {
         const mouseX = e.clientX;
         const mouseY = e.clientY;
         const windowWidth = window.innerWidth;
+        const isSmallScreen = windowWidth <= 768;
 
-        // Update cursor position
-        gsap.to(cursor, {
-            x: mouseX,
-            y: mouseY,
-            duration: 0.1
-        });
+        // Update cursor position (hidden on small screens via CSS)
+        if (!isSmallScreen) {
+            gsap.to(cursor, {
+                x: mouseX,
+                y: mouseY,
+                duration: 0.1
+            });
+        }
+
+        // Skip hero split/parallax on small screens
+        if (isSmallScreen) return;
 
         // Calculate percentage (0 to 100)
         const percentage = (mouseX / windowWidth) * 100;
@@ -226,6 +265,8 @@ function initMouseInteractions() {
     const cards = Array.from(document.querySelectorAll('.card'));
     if (cards.length === 0) return;
 
+    const isSmallScreen = () => window.innerWidth <= 768;
+
     // Configuration
     const cardDistance = 40; // Horizontal offset per card (px)
     const verticalDistance = 40; // Vertical offset per card (px)
@@ -277,12 +318,15 @@ function initMouseInteractions() {
         });
     };
 
-    // Initial Set - Ensures they start exactly where they should be
-    cards.forEach((card, i) => {
-        placeNow(card, makeSlot(i));
-    });
+    // Initial Set - Ensures they start exactly where they should be (desktop only)
+    if (!isSmallScreen()) {
+        cards.forEach((card, i) => {
+            placeNow(card, makeSlot(i));
+        });
+    }
 
     const scheduleNextSwap = () => {
+        if (isSmallScreen()) return;
         clearTimeout(timeoutId);
         if (!isHovering) {
             timeoutId = setTimeout(swap, delay);
@@ -290,6 +334,7 @@ function initMouseInteractions() {
     };
 
     const swap = () => {
+        if (isSmallScreen()) return;
         if (order.length < 2) return;
         if (isHovering && (!tl || !tl.isActive())) return;
 
@@ -426,9 +471,16 @@ function initMouseInteractions() {
         });
     });
 
-    // Start Loop
-    scheduleNextSwap();
-
+    // Start Loop (desktop only)
+    if (!isSmallScreen()) {
+        scheduleNextSwap();
+    }
+    window.addEventListener('resize', () => {
+        if (isSmallScreen()) {
+            clearTimeout(timeoutId);
+            gsap.set(cards, { clearProps: 'all' });
+        }
+    });
 })();
 
 // Force initial visibility check
@@ -570,51 +622,56 @@ window.dispatchEvent(new Event('resize'));
 
     if (!skillsSection || !centerSkill) return;
 
+    const isSmallScreen = () => window.innerWidth <= 768;
+
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: skillsSection,
-            start: "top top",
-            end: "+=2000",
-            pin: true,
-            scrub: 1,
-            // markers: true // Enable for debugging
+            start: isSmallScreen() ? "top 85%" : "top top",
+            end: isSmallScreen() ? "top 50%" : "+=2000",
+            pin: !isSmallScreen(),
+            scrub: isSmallScreen() ? false : 1,
         }
     });
 
     // 1. Center element fades in bit by bit
     tl.to(centerSkill, {
         opacity: 1,
-        duration: 1,
+        duration: isSmallScreen() ? 0.5 : 1,
         ease: "power1.inOut"
     });
 
-    // 2. Left side elements slide in, fade in, and align from initial rotation
-    // We animate from "off" state to "final" state defined in CSS (which is the aligned state)
-    // But since CSS has unique positions, we need to decide if we animate TO them or FROM an offset.
-    // 'from' is easier if we want them to land in their CSS-defined spots.
+    if (!isSmallScreen()) {
+        // 2. Left side elements slide in first (desktop only)
+        tl.from(leftSkills, {
+            x: -300,
+            y: (i) => (i % 2 === 0 ? -100 : 100),
+            opacity: 0,
+            rotation: -45,
+            stagger: 0.2,
+            duration: 1.5,
+            ease: "power2.out"
+        }, "-=0.2");
 
-    // 2. Left side elements slide in first
-    tl.from(leftSkills, {
-        x: -300,  // Constant start position (closer)
-        y: (i) => (i % 2 === 0 ? -100 : 100), // Only Y changes
-        opacity: 0,
-        rotation: -45,
-        stagger: 0.2,
-        duration: 1.5,
-        ease: "power2.out"
-    }, "-=0.2");
-
-    // 3. Right side elements slide in overlapping with left side
-    tl.from(rightSkills, {
-        x: 700, // Must be greater than max CSS transform (350%) to ensure Right->Left movement
-        y: (i) => (i % 2 === 0 ? -100 : 100), // Match left side vertical variation
-        opacity: 0,
-        rotation: 45,
-        stagger: 0.1,
-        duration: 1.5,
-        ease: "power2.out"
-
-    }, "-=1.0"); // Overlap: start 1 second before left finishes
+        // 3. Right side elements slide in (desktop only)
+        tl.from(rightSkills, {
+            x: 700,
+            y: (i) => (i % 2 === 0 ? -100 : 100),
+            opacity: 0,
+            rotation: 45,
+            stagger: 0.1,
+            duration: 1.5,
+            ease: "power2.out"
+        }, "-=1.0");
+    } else {
+        // Mobile/tablet: simple fade-in for skills (transform/opacity only)
+        tl.from([...leftSkills, ...rightSkills], {
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.05,
+            ease: "power2.out"
+        }, "-=0.3");
+    }
 
     // 4. Fade in all skill names after visuals settle
     const skillNames = document.querySelectorAll('.skill-name');
@@ -622,7 +679,7 @@ window.dispatchEvent(new Event('resize'));
         opacity: 1,
         duration: 0.8,
         ease: "power2.out"
-    }, "-=0.2"); // Start slightly before the movement completely stops
+    }, "-=0.2");
 
 
 
