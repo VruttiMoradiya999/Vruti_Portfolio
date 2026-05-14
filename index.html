@@ -364,33 +364,48 @@
       <div class="card-swap-wrapper">
         <div class="card-swap-container">
           <!-- Card 1 -->
-          <div class="card">
+          <div class="card" id="project-card-1">
             <div class="card-header">
               <i class="fa-solid fa-code"></i>
               <span>Coming Soon</span>
             </div>
             <div class="card-body">
-              <img src="images/project1.png" alt="Project 1" class="card-project-img">
+              <!-- Thumbnail: shown by default -->
+              <img src="images/project1.png" alt="Project 1" class="card-project-img card-thumb">
+              <!-- Video: plays on hover. Replace src with your actual video file -->
+              <video class="card-project-img card-video" muted loop playsinline preload="none">
+                <source src="images/project1.mp4" type="video/mp4">
+              </video>
+              <!-- Hover play overlay icon -->
+              <div class="card-play-icon"><i class="fa-solid fa-play"></i></div>
             </div>
           </div>
           <!-- Card 2 -->
-          <div class="card">
+          <div class="card" id="project-card-2">
             <div class="card-header">
               <i class="fa-solid fa-sliders"></i>
               <span>Developing</span>
             </div>
             <div class="card-body">
-              <img src="images/project2.png" alt="Project 2" class="card-project-img">
+              <img src="images/project2.png" alt="Project 2" class="card-project-img card-thumb">
+              <video class="card-project-img card-video" muted loop playsinline preload="none">
+                <source src="images/project2.mp4" type="video/mp4">
+              </video>
+              <div class="card-play-icon"><i class="fa-solid fa-play"></i></div>
             </div>
           </div>
           <!-- Card 3 -->
-          <div class="card">
+          <div class="card" id="project-card-3">
             <div class="card-header">
               <i class="fa-solid fa-circle"></i>
               <span>Concept</span>
             </div>
             <div class="card-body">
-              <img src="images/project3.png" alt="Project 3" class="card-project-img">
+              <img src="images/project3.png" alt="Project 3" class="card-project-img card-thumb">
+              <video class="card-project-img card-video" muted loop playsinline preload="none">
+                <source src="images/project3.mp4" type="video/mp4">
+              </video>
+              <div class="card-play-icon"><i class="fa-solid fa-play"></i></div>
             </div>
           </div>
         </div>
@@ -431,6 +446,18 @@
             <i class="fa-brands fa-git-alt"></i>
             <span class="skill-name skill-heading">Git</span>
           </div>
+          <div class="skill-item left-skill-item" style="--i: 5; --row: 3;">
+            <i class="fa-brands fa-react"></i>
+            <span class="skill-name skill-heading">React</span>
+          </div>
+          <div class="skill-item left-skill-item" style="--i: 6; --row: 4;">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+              style="width: 100%; height: 100%; fill: currentColor;">
+              <text x="50" y="55" font-family="monospace" font-size="24" font-weight="bold" text-anchor="middle"
+                dominant-baseline="middle">MDB</text>
+            </svg>
+            <span class="skill-name skill-heading">MongoDB</span>
+          </div>
         </div>
 
         <!-- Right Side Elements -->
@@ -458,6 +485,22 @@
                 dominant-baseline="middle">C</text>
             </svg>
             <span class="skill-name skill-heading">C</span>
+          </div>
+          <div class="skill-item right-skill-item" style="--i: 5; --row: 3;">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+              style="width: 100%; height: 100%; fill: currentColor;">
+              <text x="50" y="55" font-family="monospace" font-size="28" font-weight="bold" text-anchor="middle"
+                dominant-baseline="middle">EX</text>
+            </svg>
+            <span class="skill-name skill-heading">Express</span>
+          </div>
+          <div class="skill-item right-skill-item" style="--i: 6; --row: 4;">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+              style="width: 100%; height: 100%; fill: currentColor;">
+              <text x="50" y="55" font-family="monospace" font-size="22" font-weight="bold" text-anchor="middle"
+                dominant-baseline="middle">PAN</text>
+            </svg>
+            <span class="skill-name skill-heading">Pandas</span>
           </div>
         </div>
       </div>

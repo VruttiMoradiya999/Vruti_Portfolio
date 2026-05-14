@@ -450,6 +450,11 @@ function initMouseInteractions() {
                 if (tl && tl.isActive()) tl.pause();
                 if (textTl && textTl.isActive()) textTl.pause();
             }
+            // Play video on hover
+            const video = card.querySelector('video');
+            if (video) {
+                video.play().catch(e => console.log("Video play interrupted"));
+            }
         });
         card.addEventListener('mouseleave', () => {
             hoverCount--;
@@ -459,6 +464,12 @@ function initMouseInteractions() {
                 if (tl && tl.paused()) tl.resume();
                 if (textTl && textTl.paused()) textTl.resume();
                 if (!tl || !tl.isActive()) scheduleNextSwap();
+            }
+            // Pause and reset video when mouse leaves
+            const video = card.querySelector('video');
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
             }
         });
     });
