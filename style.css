@@ -995,7 +995,8 @@ body.light-theme .scroller-inner img {
         justify-content: center;
     }
 
-    .info-block, .stat-block {
+    .info-block,
+    .stat-block {
         display: flex;
         flex-direction: column;
         align-items: center;
