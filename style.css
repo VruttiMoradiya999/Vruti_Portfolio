@@ -218,9 +218,10 @@ body {
 .mobile-dropdown {
     position: fixed;
     top: 100px;
-    left: 0;
+    left: 5vw; /* Center align with navbar */
     width: 90vw;
-    height: 40vh;
+    height: auto;
+    padding: 3rem 0;
     background: var(--nav-bg);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -279,6 +280,20 @@ body {
 
     .mobile-toggle {
         display: flex;
+        width: 30px;
+        height: 20px;
+    }
+
+    .mobile-toggle span {
+        height: 2px;
+    }
+
+    /* Correct active animations for hamburger */
+    .mobile-toggle.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .mobile-toggle.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
     }
 
     .navbar {
@@ -287,14 +302,54 @@ body {
         padding: 0 5vw;
     }
 
+    .logo-wrapper {
+        padding: 6px 18px;
+    }
+
+    .nav-left .logo {
+        font-size: 1.1rem;
+    }
+
     .button-container {
-        gap: 0.8rem;
-        /* Closer grouping for theme and hamburger */
+        gap: 0.8rem; /* Closer grouping for theme and hamburger */
     }
 
     .themeToggle {
-        margin-left: 0;
-        /* Remove desktop margin on mobile */
+        width: 24px;
+        height: 24px;
+        margin-left: 0; /* Remove desktop margin on mobile */
+    }
+
+    /* Mobile Dropdown Socials Styles */
+    .mobile-dropdown-socials {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem;
+        margin-top: 1.5rem;
+    }
+
+    .mobile-dropdown-socials .button {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        width: 36px !important;
+        height: 36px !important;
+        background-color: var(--text-color);
+        border: 1px solid var(--text-color);
+        color: var(--bg-color);
+    }
+
+    .mobile-dropdown-socials .button:hover {
+        transform: rotate(360deg);
+        background-color: transparent;
+        color: var(--text-color);
+    }
+
+    .mobile-dropdown-socials .button .btn-svg {
+        width: 18px !important;
+        height: 18px !important;
+        fill: currentColor;
     }
 }
 
