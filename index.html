@@ -320,11 +320,11 @@
       <div class="about-col about-info-text">
         <div class="info-block">
           <h6>Who am I?</h6>
-          <p>I am <span style="font-weight: bold;">Vruti Moradiya</span>, a BTech student at MIT ADT, Pune. I have a
-            keen interest in coding, problem-solving, and web development, with a strong focus on building innovative
-            and efficient solutions. My technical skills include <span style="font-weight: bold;">HTML, CSS, and
-              JavaScript, C, C++, Python</span>, which I use to design dynamic, responsive, and user-friendly web
-            applications.
+          <p>I am <span style="font-weight: bold;">Vruti Moradiya</span>, a BTech student at MIT ADT, Pune. passionate
+            about coding, problem-solving, and web development. I enjoy building responsive and interactive web
+            applications using technologies like <span style="font-weight: bold;">HTML, CSS, and
+              JavaScript, C, C++, Python</span>, Currently, I am also exploring <span style="font-weight: bold;">Artificial Intelligence and Machine
+            Learning</span> to expand my skills and build innovative real-world solutions.
           </p>
         </div>
         <div class="info-block">
@@ -673,9 +673,9 @@
     const form = document.querySelector('.contact-form');
     const submitBtn = form.querySelector('.submit-btn');
 
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', async function (e) {
       e.preventDefault(); // Prevents the default form redirect
-      
+
       // Change button text to show loading
       const originalBtnText = submitBtn.innerText;
       submitBtn.innerText = 'Sending...';
@@ -694,9 +694,9 @@
           },
           body: json
         });
-        
+
         const result = await response.json();
-        
+
         if (response.status == 200) {
           alert('Message sent successfully! I will get back to you soon.');
           form.reset(); // Clear the form
