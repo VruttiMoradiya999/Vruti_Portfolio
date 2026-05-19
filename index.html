@@ -279,7 +279,7 @@
         </div>
         <div class="info-block">
 
-          <button class="download-btn" type="button">
+          <a href="Vruti_Moradiya_Resume.pdf" download="Vruti_Moradiya_Resume.pdf" class="download-btn">
             <span class="button__text">Download Resume</span>
             <span class="button__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307"
@@ -295,7 +295,7 @@
                 </path>
               </svg>
             </span>
-          </button>
+          </a>
         </div>
       </div>
 
@@ -347,65 +347,88 @@
 
     <div class="projects-content-wrapper">
       <div class="projects-text-content project-detail-1">
-        <h2>Coming Soon</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Coming soon.</p>
+        <h2>FLOWLENS</h2>
+        <p>FlowLens is an AI agent that silently watches your screen, tracks every AI tool you use, scores your prompt
+          quality in real time, and builds a searchable memory of your entire day — then delivers a brutally honest
+          end-of-day report so you stop using AI and start mastering it.</p>
       </div>
       <div class="projects-text-content project-detail-2">
-        <h2>In Development</h2>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          Duis aute irure dolor.</p>
+        <h2>NUTRIPOCKET </h2>
+        <p>NutriPocket is an AI-powered smart nutrition and health assistant that helps users make personalized food
+          decisions based on their health conditions, goals, and nutritional needs.
+          The platform combines intelligent meal planning, food scanning, and health insights to promote healthier
+          eating habits through an interactive and user-friendly experience.
+        </p>
       </div>
       <div class="projects-text-content project-detail-3">
-        <h2>Future Concepts</h2>
-        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-          laborum. Stay tuned for updates.</p>
+        <h2>DSA VISUALIZER</h2>
+        <p>An interactive Data Structure Visualizer built with Next.js and TypeScript that helps users understand
+          complex data structures and algorithms through real-time animations and simulations.
+          The platform includes visualizations for linked lists, trees, graphs, stacks, queues, hashing, and pathfinding
+          algorithms with an intuitive and modern UI for better learning.</p>
       </div>
       <div class="card-swap-wrapper">
         <div class="card-swap-container">
           <!-- Card 1 -->
           <div class="card" id="project-card-1">
             <div class="card-header">
-              <i class="fa-solid fa-code"></i>
-              <span>Coming Soon</span>
+              <i class="fa-solid fa-eye"></i>
+              <span>FlowLens</span>
             </div>
             <div class="card-body">
               <!-- Thumbnail: shown by default -->
-              <img src="images/project1.png" alt="Project 1" class="card-project-img card-thumb">
-              <!-- Video: plays on hover. Replace src with your actual video file -->
-              <video class="card-project-img card-video" muted loop playsinline preload="none">
-                <source src="images/project1.mp4" type="video/mp4">
-              </video>
+              <img src="images/flowlens-thumbnail.png" alt="FlowLens" class="card-project-img card-thumb">
+              <!-- YouTube iframe: loads on hover, stops on mouse leave -->
+              <!-- REPLACE YOUR_VIDEO_ID below with your actual YouTube video ID -->
+              <!-- e.g. for https://www.youtube.com/watch?v=dQw4w9WgXcQ → use dQw4w9WgXcQ -->
+              <iframe id="yt-card-1" class="card-project-img card-video card-yt-frame" data-yt-id="6WdPe1_EjNk" src=""
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
               <!-- Hover play overlay icon -->
               <div class="card-play-icon"><i class="fa-solid fa-play"></i></div>
+              <!-- Project description overlay -->
+              <div class="card-desc-overlay">
+                <p>FlowLens is an AI agent that silently watches your screen, tracks every AI tool you use, scores your
+                  prompt quality in real time, and builds a searchable memory of your entire day — then delivers a
+                  brutally honest end-of-day report so you stop using AI and start mastering it.</p>
+              </div>
             </div>
           </div>
           <!-- Card 2 -->
           <div class="card" id="project-card-2">
             <div class="card-header">
-              <i class="fa-solid fa-sliders"></i>
-              <span>Developing</span>
+              <i class="fa-solid fa-leaf"></i>
+              <span>NutriPocket</span>
             </div>
             <div class="card-body">
-              <img src="images/project2.png" alt="Project 2" class="card-project-img card-thumb">
-              <video class="card-project-img card-video" muted loop playsinline preload="none">
-                <source src="images/project2.mp4" type="video/mp4">
-              </video>
+              <img src="images/nutripocket-thumbnail.png" alt="NutriPocket" class="card-project-img card-thumb">
+              <iframe id="yt-card-2" class="card-project-img card-video card-yt-frame" data-yt-id="2dVlNPVhRmg" src=""
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
               <div class="card-play-icon"><i class="fa-solid fa-play"></i></div>
+              <div class="card-desc-overlay">
+                <p>NutriPocket is an AI-powered smart nutrition and health assistant that helps users make personalized
+                  food decisions based on their health conditions, goals, and nutritional needs. The platform combines
+                  intelligent meal planning, food scanning, and health insights to promote healthier eating habits
+                  through an interactive and user-friendly experience.</p>
+              </div>
             </div>
           </div>
           <!-- Card 3 -->
           <div class="card" id="project-card-3">
             <div class="card-header">
-              <i class="fa-solid fa-circle"></i>
-              <span>Concept</span>
+              <i class="fa-solid fa-network-wired"></i>
+              <span>DSA Visualizer</span>
             </div>
             <div class="card-body">
-              <img src="images/project3.png" alt="Project 3" class="card-project-img card-thumb">
-              <video class="card-project-img card-video" muted loop playsinline preload="none">
-                <source src="images/project3.mp4" type="video/mp4">
-              </video>
+              <img src="images/dsa-visualizer-thumbnail.png" alt="DSA Visualizer" class="card-project-img card-thumb">
+              <iframe id="yt-card-3" class="card-project-img card-video card-yt-frame" data-yt-id="B-C_A_niunY" src=""
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
               <div class="card-play-icon"><i class="fa-solid fa-play"></i></div>
+              <div class="card-desc-overlay">
+                <p>An interactive Data Structure Visualizer built with Next.js and TypeScript that helps users
+                  understand complex data structures and algorithms through real-time animations and simulations. The
+                  platform includes visualizations for linked lists, trees, graphs, stacks, queues, hashing, and
+                  pathfinding algorithms with an intuitive and modern UI for better learning.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -519,7 +542,10 @@
           <h2 class="contact-heading">just<br>send it.</h2>
         </div>
         <div class="contact-right">
-          <form class="contact-form">
+          <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+            <!-- Replace with your Access Key -->
+            <input type="hidden" name="access_key" value="285d8faa-e271-4624-bf16-d6241a5e9c5b">
+
             <div class="nebula-input">
               <input required="" type="text" name="name" id="name" autocomplete="off" class="input" />
               <label class="user-label" for="name">Name</label>
@@ -530,6 +556,18 @@
               <div class="nebula-particle" style="--x:0.1; --y:-0.7; --delay:0.4s"></div>
               <div class="nebula-particle" style="--x:0.6; --y:0.4; --delay:0.6s"></div>
             </div>
+
+            <div class="nebula-input">
+              <input required="" type="email" name="email" id="email" autocomplete="off" class="input" />
+              <label class="user-label" for="email">Email</label>
+              <div class="nebula-particle" style="--x:0.2; --y:-0.4; --delay:0.1s"></div>
+              <div class="nebula-particle" style="--x:0.5; --y:-0.2; --delay:0.3s"></div>
+              <div class="nebula-particle" style="--x:0.3; --y:0.3; --delay:0.5s"></div>
+              <div class="nebula-particle" style="--x:0.7; --y:0.1; --delay:0.2s"></div>
+              <div class="nebula-particle" style="--x:0.1; --y:-0.7; --delay:0.4s"></div>
+              <div class="nebula-particle" style="--x:0.6; --y:0.4; --delay:0.6s"></div>
+            </div>
+
             <div class="nebula-input">
               <textarea required="" name="message" id="message" class="input"
                 style="min-height: 100px; resize: vertical;"></textarea>
@@ -552,6 +590,80 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
+
+  <!-- YouTube hover autoplay for project cards -->
+  <script>
+    (function () {
+      const cards = ['project-card-1', 'project-card-2', 'project-card-3'];
+
+      cards.forEach((cardId, index) => {
+        const card = document.getElementById(cardId);
+        const iframe = document.getElementById('yt-card-' + (index + 1));
+
+        if (card && iframe) {
+          const ytId = iframe.dataset.ytId;
+          const embedBase = 'https://www.youtube.com/embed/';
+          const params = '?autoplay=1&mute=1&loop=1&playlist=' + ytId + '&controls=0&rel=0&modestbranding=1';
+
+          card.addEventListener('mouseenter', function () {
+            if (ytId && ytId !== 'YOUR_VIDEO_ID') {
+              iframe.src = embedBase + ytId + params;
+            }
+          });
+
+          card.addEventListener('mouseleave', function () {
+            iframe.src = ''; // stops video and frees resources
+          });
+        }
+      });
+    })();
+  </script>
+  <!-- Web3Forms AJAX Submission (Prevents Redirect) -->
+  <script>
+    const form = document.querySelector('.contact-form');
+    const submitBtn = form.querySelector('.submit-btn');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault(); // Prevents the default form redirect
+      
+      // Change button text to show loading
+      const originalBtnText = submitBtn.innerText;
+      submitBtn.innerText = 'Sending...';
+      submitBtn.disabled = true;
+
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: json
+        });
+        
+        const result = await response.json();
+        
+        if (response.status == 200) {
+          alert('Message sent successfully! I will get back to you soon.');
+          form.reset(); // Clear the form
+        } else {
+          console.log(response);
+          alert('Something went wrong. Please try again.');
+        }
+      } catch (error) {
+        console.log(error);
+        alert('Something went wrong. Please check your internet connection.');
+      } finally {
+        // Restore button state
+        submitBtn.innerText = originalBtnText;
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
 </body>
 
 </html>
