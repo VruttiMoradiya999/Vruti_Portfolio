@@ -71,6 +71,17 @@ if (mobileToggle && mobileDropdown) {
             document.body.style.overflow = 'auto';
         });
     });
+
+    // Close menu when clicking anywhere outside of it
+    document.addEventListener('click', (e) => {
+        if (mobileDropdown.classList.contains('active')) {
+            if (!mobileToggle.contains(e.target) && !mobileDropdown.contains(e.target)) {
+                mobileToggle.classList.remove('active');
+                mobileDropdown.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    });
 }
 
 // Detect mobile breakpoint
