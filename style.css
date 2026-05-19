@@ -1829,13 +1829,14 @@ body.light-theme .skill-name {
 
     /* Make wrapper relative to hold absolute text items */
     .projects-content-wrapper {
-        height: 60vh;
-        /* Fixed height for interaction */
+        height: 100vh;
+        /* Increased height to prevent text and card overlap on mobile */
     }
 
     .card-swap-container {
         right: 50% !important;
-        top: 50% !important;
+        top: 65% !important;
+        /* Pushed cards down further to make room for text */
     }
 }
 
@@ -2094,11 +2095,20 @@ body.light-theme .skill-name {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
     flex-direction: column;
 }
 
 @media (max-width: 900px) {
+    .contact-section {
+        height: auto;
+        min-height: 100vh;
+        padding-bottom: 3rem;
+    }
+
     .contact-content {
         flex-direction: column;
         align-items: center;
